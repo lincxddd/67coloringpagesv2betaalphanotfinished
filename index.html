@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>67 Coloring Pages</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+    }
+
+    header {
+      width: 100%;
+      text-align: center;
+      padding: 40px 0 20px 0;
+      background: radial-gradient(circle at center, #111 0%, #000 70%);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    }
+
+    header img {
+      width: 400px;
+      max-width: 90%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      image-rendering: crisp-edges;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      width: 90%;
+      max-width: 1200px;
+      padding: 30px 20px 60px 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 12px;
+      background-color: #222;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    }
+
+    /* REVIEW SECTION */
+    .reviews {
+      width: 90%;
+      max-width: 800px;
+      padding: 40px 20px;
+      text-align: center;
+      border-top: 1px solid #333;
+      margin-top: 40px;
+    }
+
+    .review-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #111;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.1);
+      gap: 15px;
+    }
+
+    .review-top {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .review-top img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .stars {
+      color: #00ff6a;
+      font-size: 1.1rem;
+      margin: 4px 0;
+      animation: glow 1.6s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 4px #00ff6a, 0 0 8px #00ff6a; }
+      100% { text-shadow: 0 0 12px #00ff6a, 0 0 22px #00ff6a, 0 0 45px #00ff6a; }
+    }
+
+    .review-image {
+      width: 100%;
+      max-width: 350px;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(255,255,255,0.15);
+      transition: transform .25s ease;
+    }
+
+    .review-image:hover {
+      transform: scale(1.03);
+    }
+
+    /* FULLSCREEN POPUP */
+    #popup {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.85);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    #popup img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(0,255,150,0.4);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="67colorlogo.png" alt="67 Coloring Pages Title" />
+  </header>
+
+  <main class="gallery">
+    <a href="https://lincxddd.github.io/67coloringpages-stevenuniverse1" target="_blank">
+      <img src="stvenuniverse1.jpg" alt="Los 67 Coloring Page" />
+    </a>
+
+    <img src="https://via.placeholder.com/400x400?text=Page+2" alt="Placeholder 2" />
+    <img src="https://via.placeholder.com/400x400?text=Page+3" alt="Placeholder 3" />
+    <img src="https://via.placeholder.com/400x400?text=Page+4" alt="Placeholder 4" />
+    <img src="https://via.placeholder.com/400x400?text=Page+5" alt="Placeholder 5" />
+    <img src="https://via.placeholder.com/400x400?text=Page+6" alt="Placeholder 6" />
+    <img src="https://via.placeholder.com/400x400?text=Page+7" alt="Placeholder 7" />
+    <img src="https://via.placeholder.com/400x400?text=Page+8" alt="Placeholder 8" />
+    <img src="https://via.placeholder.com/400x400?text=Page+9" alt="Placeholder 9" />
+  </main>
+
+  <!-- TOTALLY REAL REVIEW -->
+  <section class="reviews">
+    <h2>Totally Real Reviews</h2>
+    <div class="review-box">
+      <div class="review-top">
+        <img src="nichemango.png" alt="nichemango" />
+        <div>
+          <p style="margin:0; font-weight:bold;">nichemango</p>
+          <p class="stars">★★★★★</p>
+          <p style="margin:0;">"absolutely peak coloring experience fr fr"</p>
+        </div>
+      </div>
+
+      <!-- Click to fullscreen -->
+      <img src="reviewimage.jpg" class="review-image" onclick="openPopup(this.src)" alt="review screenshot">
+    </div>
+  </section>
+
+  <!-- Fullscreen Popup -->
+  <div id="popup" onclick="closePopup()">
+    <img id="popup-img" src="">
+  </div>
+
+  <script>
+    function openPopup(src) {
+      document.getElementById("popup-img").src = src;
+      document.getElementById("popup").style.display = "flex";
+    }
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
